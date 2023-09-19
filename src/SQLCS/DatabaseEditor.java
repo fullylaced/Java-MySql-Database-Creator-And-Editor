@@ -8,7 +8,7 @@ public class DatabaseEditor{
 	   public static void main(String[] args) {
 		      Connection con=null;
 		      Statement stmt=null;
-		      String yourDatabaseName="watt_Database2";
+		      String yourDatabaseName="Test_Database";
 		      try {
 		         con=DriverManager.getConnection("jdbc:mysql://localhost:3306/yurr?useSSL=false",
 		         "root","");
