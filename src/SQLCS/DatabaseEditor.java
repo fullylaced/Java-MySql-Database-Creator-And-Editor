@@ -10,8 +10,12 @@ package SQLCS;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class DatabaseEditor {
+	static String NO_LINK = "\"N/A\"";
+	static String LOCALHOST_STRING = "localhost:3306/?useSSL=false";
+	
     public static void main(String[] args) {
         // Initialize variables for database connection and statement
         Connection con = null;
@@ -21,8 +25,16 @@ public class DatabaseEditor {
         String yourDatabaseName = "Test_Database";
         
         try {
+        	Scanner scanner = new Scanner(System.in);
+        	System.out.println("Enter the MySQL Server Link (or type " + NO_LINK + " or leave entry blank to reach localhost):");
+        	String linkEntry = scanner.nextLine();
+        	if (linkEntry.equals("N/A") || linkEntry.isEmpty()) {
+        		con = DriverManager.getConnection(("jdbc:mysql://" + LOCALHOST_STRING), "root", "");
+        	}else {
+        		con = DriverManager.getConnection(("jdbc:mysql://" + linkEntry), "root", "");
+        	}
+        	scanner.close();
             // Establish a connection to the MySQL server
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?useSSL=false", "root", "");
             
             // Create a statement object to execute SQL commands
             stmt = con.createStatement();
