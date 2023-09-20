@@ -1,3 +1,10 @@
+/**
+ * DatabaseEditor - a Java program for connecting to a MySQL server
+ * and creating a new database.
+ *
+ * Author: Avram Parra
+ */
+
 package SQLCS;
 
 import java.sql.Connection;
@@ -11,11 +18,11 @@ public class DatabaseEditor {
         Statement stmt = null;
         
         // Specify the name of the database you want to create
-        String yourDatabaseName = "Teest_Database";
+        String yourDatabaseName = "Test_Database";
         
         try {
             // Establish a connection to the MySQL server
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/yurr?useSSL=false", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?useSSL=false", "root", "");
             
             // Create a statement object to execute SQL commands
             stmt = con.createStatement();
